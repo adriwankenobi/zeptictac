@@ -32,7 +32,7 @@ $ mvn clean test
 $ # generate war
 $ mvn compile war:war
 $ # deploy in tomcat (Linux = move war to webapps folder /opt/tomcat/webapps)
-$ cp target/zeptictac.war $TOMCAT_WEBAPPS_FOLDER # move to webapps folder
+$ cp target/zeptictac.war $TOMCAT_WEBAPPS_FOLDER
 $ # start tomcat (Linux = /etc/init.d/tomcat restart)
 $ ./restart_tomcat.sh
 ```
@@ -46,7 +46,7 @@ $ ./restart_tomcat.sh
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```json 
+                ```javascript 
                {"data":
                        [ {"id": "c67782q3aen8vs0l6dg0o8nbud",
                           "field": [["-", "X", "O"],["-", "X", "-"],["-", "-", "-"]],
@@ -75,7 +75,7 @@ $ ./restart_tomcat.sh
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```json 
+                ```javascript 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
                 "field": [["-", "X", "O"],["-", "X", "-"],["-", "-", "-"]],
                 "players": [ {"id": "5pqtnt3pa1304tc4t6mcmbc3h3",
@@ -101,7 +101,7 @@ $ ./restart_tomcat.sh
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```json 
+                ```javascript 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
                 "field": [["-", "-", "-"],["-", "-", "-"],["-", "-", "-"]],
                 "players": [ {"id": "5pqtnt3pa1304tc4t6mcmbc3h3",
@@ -124,7 +124,7 @@ $ ./restart_tomcat.sh
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```json 
+                ```javascript 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
                 "field": [["-", "-", "-"],["-", "-", "-"],["-", "-", "-"]],
                 "players": [ {"id": "5pqtnt3pa1304tc4t6mcmbc3h3",
@@ -153,13 +153,13 @@ $ ./restart_tomcat.sh
             - required: playerId[alphanumeric, lower case letters]
             - required: x[numeric between 0 and grid_size-1]
             - required: y[numeric between 0 and grid_size-1]
-             ```json 
+             ```javascript 
             {"playerId": "c67782q3aen8vs0l6dg0o8nbud", "x": 0, "y": 0}
              ```
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```json 
+                ```javascript 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
                 "field": [["X", "-", "-"],["-", "-", "-"],["-", "-", "-"]],
                 "players": [ {"id": "5pqtnt3pa1304tc4t6mcmbc3h3",
@@ -183,7 +183,7 @@ $ ./restart_tomcat.sh
             - Code: 403 FORBIDDEN
                 - When game is already finished
                 - When there is not enough player's yet
-                - When it's not "playerId"'s turn
+                - When it's not the turn of "playerId"
                 - When (x, y) cell is outside the grid
                 - When (x, y) cell is not empty
 
