@@ -43,6 +43,9 @@ $ ./restart_tomcat.sh
         - Query params:
             - optional: offset[numeric between 0 and 'total games size']
             - optional: limit[numeric between 1 and 20]
+        - Error response:
+            - Code: 400 BAD REQUEST
+                -  When params have bad format
         - Success response:
             - Code: 200 OK
             - Content: 
@@ -65,13 +68,15 @@ $ ./restart_tomcat.sh
                 "previuos": "http://localhost:8080/zeptictac/v1/games?limit=3",
                 "next": "http://localhost:8080/zeptictac/v1/games?offset=6&limit=3"}
 ```
-        - Error response:
-            - Code: 400 BAD REQUEST
-                -  When params have bad format
 - Show game
     - GET /v1/games/:gameId
         - Path params:
             - required: gameId[alphanumeric, lower case letters]
+        - Error response:
+            - Code: 204 NO CONTENT 
+                - When "gameId" does not exist
+            - Code: 400 BAD REQUEST
+                -  When params have bad format
         - Success response:
             - Code: 200 OK
             - Content: 
@@ -89,15 +94,13 @@ $ ./restart_tomcat.sh
                 "nextTurn": "jb3ds6kum3qagr2132dsl5nkmh",
                 "createdAt": "2016-02-21T15:09:11+0000"}
 ```
-        - Error response:
-            - Code: 204 NO CONTENT 
-                - When "gameId" does not exist
-            - Code: 400 BAD REQUEST
-                -  When params have bad format
 - Create new game
     - POST /v1/games?nickname=:nickname
         - Query params:
             - optional: nickname[alphanumeric, lower case letters]
+        - Error response:
+            - Code: 400 BAD REQUEST
+                -  When params have bad format
         - Success response:
             - Code: 200 OK
             - Content: 
@@ -112,15 +115,19 @@ $ ./restart_tomcat.sh
                 "nextTurn": "c67782q3aen8vs0l6dg0o8nbud",
                 "createdAt": "2016-02-21T15:09:11+0000"}
 ```
-        - Error response:
-            - Code: 400 BAD REQUEST
-                -  When params have bad format
 - Join a game
     - PATCH /v1/games/:gameId?nickname=:nickname
         - Path params:
             - required: gameId[alphanumeric, lower case letters]
         - Query params:
             - optional: nickname[alphanumeric, lower case letters]
+        - Error response:
+            - Code: 204 NO CONTENT 
+                - When "gameId" does not exist
+            - Code: 400 BAD REQUEST
+                -  When params have bad format
+            - Code: 403 FORBIDDEN
+                - When game is already full
         - Success response:
             - Code: 200 OK
             - Content: 
@@ -138,24 +145,30 @@ $ ./restart_tomcat.sh
                 "nextTurn": "c67782q3aen8vs0l6dg0o8nbud",
                 "createdAt": "2016-02-21T15:09:11+0000"}
 ```
-        - Error response:
-            - Code: 204 NO CONTENT 
-                - When "gameId" does not exist
-            - Code: 400 BAD REQUEST
-                -  When params have bad format
-            - Code: 403 FORBIDDEN
-                - When game is already full
 - Put mark into game
     - PUT /v1/games/:gameId
         - Path params:
             - required: gameId[alphanumeric, lower case letters]
         - Data params:
-            - required: playerId[alphanumeric, lower case letters]
-            - required: x[numeric between 0 and grid_size-1]
-            - required: y[numeric between 0 and grid_size-1]
 ```json 
             {"playerId": "c67782q3aen8vs0l6dg0o8nbud", "x": 0, "y": 0}
 ```
+            - required: playerId[alphanumeric, lower case letters]
+            - required: x[numeric between 0 and grid_size-1]
+            - required: y[numeric between 0 and grid_size-1]
+        - Error response:
+            - Code: 204 NO CONTENT 
+                - When "gameId" does not exist
+            - Code: 400 BAD REQUEST
+                -  When params have bad format
+            - Code: 401 UNAUTHORIZED
+                - When "playerId" is not a player of the game
+            - Code: 403 FORBIDDEN
+                - When game is already finished
+                - When there is not enough player's yet
+                - When it's not the turn of "playerId"
+                - When (x, y) cell is outside the grid
+                - When (x, y) cell is not empty
         - Success response:
             - Code: 200 OK
             - Content: 
@@ -173,19 +186,6 @@ $ ./restart_tomcat.sh
                 "nextTurn": "jb3ds6kum3qagr2132dsl5nkmh",
                 "createdAt": "2016-02-21T15:09:11+0000"}
 ```
-        - Error response:
-            - Code: 204 NO CONTENT 
-                - When "gameId" does not exist
-            - Code: 400 BAD REQUEST
-                -  When params have bad format
-            - Code: 401 UNAUTHORIZED
-                - When "playerId" is not a player of the game
-            - Code: 403 FORBIDDEN
-                - When game is already finished
-                - When there is not enough player's yet
-                - When it's not the turn of "playerId"
-                - When (x, y) cell is outside the grid
-                - When (x, y) cell is not empty
 
 # release notes
 - Jersey 2.22 for implementing the REST server
