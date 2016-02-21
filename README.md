@@ -170,7 +170,7 @@ $ ./restart_tomcat.sh
             - Code: 200 OK
             - Content: 
 ```json 
-            {"playerId": "c67782q3aen8vs0l6dg0o8nbud", "x": 0, "y": 0}
+            {"playerId": "5pqtnt3pa1304tc4t6mcmbc3h3", "x": 0, "y": 0}
 ```
 ```json 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
