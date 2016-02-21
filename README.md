@@ -46,7 +46,7 @@ $ ./restart_tomcat.sh
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```javascript 
+```json 
                {"data":
                        [ {"id": "c67782q3aen8vs0l6dg0o8nbud",
                           "field": [["-", "X", "O"],["-", "X", "-"],["-", "-", "-"]],
@@ -64,7 +64,7 @@ $ ./restart_tomcat.sh
                          {...} ],
                 "previuos": "http://localhost:8080/zeptictac/v1/games?limit=3",
                 "next": "http://localhost:8080/zeptictac/v1/games?offset=6&limit=3"}
-                ```
+```
         - Error response:
             - Code: 400 BAD REQUEST
                 -  When params have bad format
@@ -75,7 +75,7 @@ $ ./restart_tomcat.sh
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```javascript 
+```json 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
                 "field": [["-", "X", "O"],["-", "X", "-"],["-", "-", "-"]],
                 "players": [ {"id": "5pqtnt3pa1304tc4t6mcmbc3h3",
@@ -88,7 +88,7 @@ $ ./restart_tomcat.sh
                 "turnNumber": 3,
                 "nextTurn": "jb3ds6kum3qagr2132dsl5nkmh",
                 "createdAt": "2016-02-21T15:09:11+0000"}
-                ```
+```
         - Error response:
             - Code: 204 NO CONTENT 
                 - When "gameId" does not exist
@@ -101,7 +101,7 @@ $ ./restart_tomcat.sh
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```javascript 
+```json 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
                 "field": [["-", "-", "-"],["-", "-", "-"],["-", "-", "-"]],
                 "players": [ {"id": "5pqtnt3pa1304tc4t6mcmbc3h3",
@@ -111,7 +111,7 @@ $ ./restart_tomcat.sh
                 "turnNumber": 0,
                 "nextTurn": "c67782q3aen8vs0l6dg0o8nbud",
                 "createdAt": "2016-02-21T15:09:11+0000"}
-                ```
+```
         - Error response:
             - Code: 400 BAD REQUEST
                 -  When params have bad format
@@ -124,7 +124,7 @@ $ ./restart_tomcat.sh
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```javascript 
+```json 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
                 "field": [["-", "-", "-"],["-", "-", "-"],["-", "-", "-"]],
                 "players": [ {"id": "5pqtnt3pa1304tc4t6mcmbc3h3",
@@ -137,7 +137,7 @@ $ ./restart_tomcat.sh
                 "turnNumber": 0,
                 "nextTurn": "c67782q3aen8vs0l6dg0o8nbud",
                 "createdAt": "2016-02-21T15:09:11+0000"}
-                ```
+```
         - Error response:
             - Code: 204 NO CONTENT 
                 - When "gameId" does not exist
@@ -153,13 +153,13 @@ $ ./restart_tomcat.sh
             - required: playerId[alphanumeric, lower case letters]
             - required: x[numeric between 0 and grid_size-1]
             - required: y[numeric between 0 and grid_size-1]
-             ```javascript 
+```json 
             {"playerId": "c67782q3aen8vs0l6dg0o8nbud", "x": 0, "y": 0}
-             ```
+```
         - Success response:
             - Code: 200 OK
             - Content: 
-                ```javascript 
+```json 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
                 "field": [["X", "-", "-"],["-", "-", "-"],["-", "-", "-"]],
                 "players": [ {"id": "5pqtnt3pa1304tc4t6mcmbc3h3",
@@ -172,7 +172,7 @@ $ ./restart_tomcat.sh
                 "turnNumber": 1,
                 "nextTurn": "jb3ds6kum3qagr2132dsl5nkmh",
                 "createdAt": "2016-02-21T15:09:11+0000"}
-                ```
+```
         - Error response:
             - Code: 204 NO CONTENT 
                 - When "gameId" does not exist
