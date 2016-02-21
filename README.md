@@ -150,9 +150,6 @@ $ ./restart_tomcat.sh
         - Path params:
             - required: gameId[alphanumeric, lower case letters]
         - Data params:
-```json 
-            {"playerId": "c67782q3aen8vs0l6dg0o8nbud", "x": 0, "y": 0}
-```
             - required: playerId[alphanumeric, lower case letters]
             - required: x[numeric between 0 and grid_size-1]
             - required: y[numeric between 0 and grid_size-1]
@@ -172,6 +169,9 @@ $ ./restart_tomcat.sh
         - Success response:
             - Code: 200 OK
             - Content: 
+```json 
+            {"playerId": "c67782q3aen8vs0l6dg0o8nbud", "x": 0, "y": 0}
+```
 ```json 
                {"id": "c67782q3aen8vs0l6dg0o8nbud",
                 "field": [["X", "-", "-"],["-", "-", "-"],["-", "-", "-"]],
