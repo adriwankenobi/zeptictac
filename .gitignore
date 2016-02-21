@@ -1,5 +1,6 @@
 .settings
 target
+WebContent
 .classpath
 .project
 *.rar
